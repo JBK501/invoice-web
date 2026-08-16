@@ -90,21 +90,22 @@
 
 전체 라우트 구조와 타입 정의를 먼저 확정해 UI와 데이터 계층이 병렬로 진행되도록 한다.
 
-- [ ] **Task 001: 라우트 구조 및 페이지 골격 생성** - 우선순위
+- [x] **Task 001: 라우트 구조 및 페이지 골격 생성** - ✅ 완료
   - **기능 매핑**: F002, F011, F012
   - **의존 관계**: 없음 (병렬 시작 가능)
   - **참조 문서**: `01-app/01-getting-started/03-layouts-and-pages.md`, `10-error-handling.md`
+  - **See**: `/docs/tasks/001-routing-skeleton.md`
   - 구현 사항
-    - [ ] `src/app/invoice/[notionPageId]/page.tsx` 동적 라우트 생성. `params: Promise<{ notionPageId: string }>` 로 타이핑하고 `await params` 로 읽는다.
-    - [ ] `src/app/invoice/[notionPageId]/loading.tsx` 생성 (Skeleton 기반 로딩 UI 자리표시자).
-    - [ ] `src/app/invoice/[notionPageId]/error.tsx` 생성 (렌더링 오류 경계).
-    - [ ] `src/app/invoice/[notionPageId]/not-found.tsx` 생성 또는 루트 `not-found.tsx` 재사용 여부 결정.
-    - [ ] `src/app/page.tsx` 를 서비스 안내용 랜딩으로 정리한다 (MVP에서 목록 기능은 제공하지 않음).
-    - [ ] `generateMetadata` 로 견적서 번호가 제목에 반영되도록 골격만 배치한다.
+    - [x] `src/app/invoice/[notionPageId]/page.tsx` 동적 라우트 생성. `params: Promise<{ notionPageId: string }>` 로 타이핑하고 `await params` 로 읽는다.
+    - [x] `src/app/invoice/[notionPageId]/loading.tsx` 생성 (Skeleton 기반 로딩 UI 자리표시자).
+    - [x] `src/app/invoice/[notionPageId]/error.tsx` 생성 (렌더링 오류 경계).
+    - [x] `src/app/invoice/[notionPageId]/not-found.tsx` 생성 또는 루트 `not-found.tsx` 재사용 여부 결정. → 루트 재사용 결정.
+    - [x] `src/app/page.tsx` 를 서비스 안내용 랜딩으로 정리한다 (MVP에서 목록 기능은 제공하지 않음). → 이미 완료 상태 확인.
+    - [x] `generateMetadata` 로 견적서 번호가 제목에 반영되도록 골격만 배치한다.
   - **완료 조건(DoD)**
-    - [ ] `/invoice/test-id` 접근 시 빈 껍데기 페이지가 200으로 렌더링된다.
-    - [ ] `npm run build` 와 `npm run lint` 가 오류 없이 통과한다.
-    - [ ] `params` 를 동기 접근하는 코드가 없다.
+    - [x] `/invoice/test-id` 접근 시 빈 껍데기 페이지가 200으로 렌더링된다.
+    - [x] `npm run build` 와 `npm run lint` 가 오류 없이 통과한다.
+    - [x] `params` 를 동기 접근하는 코드가 없다.
 
 - [ ] **Task 002: 타입 정의 및 환경 변수 설계**
   - **기능 매핑**: F001, F010
