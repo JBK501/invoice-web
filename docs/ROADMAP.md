@@ -26,7 +26,7 @@
 | `src/components/layout/*` (container, header, footer), `src/components/common/*` | 구현 완료 |
 | `@notionhq/client` | 미설치 (Task 003에서 도입) |
 | PDF 생성 라이브러리 (`@react-pdf/renderer` 등) | 미설치 (Task 007에서 도입) |
-| `NOTION_API_KEY`, `NOTION_DATABASE_ID` | 미설정 (Task 002에서 설정) |
+| `NOTION_API_KEY`, `NOTION_DATABASE_ID` | `src/lib/env.ts` 헬퍼 및 `.env.example` 작성 완료 (Task 002) |
 | `src/app/invoice/[notionPageId]/` 라우트 | 미생성 (Task 001에서 생성) |
 
 ## ⚠️ Next.js 16 작업 규칙 (필수)
@@ -107,21 +107,22 @@
     - [x] `npm run build` 와 `npm run lint` 가 오류 없이 통과한다.
     - [x] `params` 를 동기 접근하는 코드가 없다.
 
-- [ ] **Task 002: 타입 정의 및 환경 변수 설계**
+- [x] **Task 002: 타입 정의 및 환경 변수 설계** - ✅ 완료
   - **기능 매핑**: F001, F010
   - **의존 관계**: 없음 (Task 001과 병렬 가능)
   - **참조 문서**: `01-app/02-guides/environment-variables.md`
+  - **See**: `/docs/tasks/002-types-and-env.md`
   - 구현 사항
-    - [ ] `src/types/invoice.ts` 에 `Invoice`, `InvoiceItem`, `InvoiceStatus` 타입 정의. PRD 데이터 모델(`invoice_number`, `client_name`, `issue_date`, `valid_until`, `items`, `total_amount`, `status`)을 그대로 반영한다.
-    - [ ] `InvoiceItem` 에 `description`, `quantity`, `unit_price`, `amount`(Formula 결과), `invoice_id` 를 정의한다.
-    - [ ] Notion 원본 응답 타입과 앱 도메인 타입을 분리하고 매핑 함수 시그니처를 선언한다.
-    - [ ] `src/lib/env.ts` 에서 `NOTION_API_KEY`, `NOTION_DATABASE_ID` 를 검증해 읽는 헬퍼를 작성한다 (서버 전용, `NEXT_PUBLIC_` 접두사 금지).
-    - [ ] `.env.example` 작성 및 `.gitignore` 에 `.env.local` 포함 여부 확인.
-    - [ ] `src/lib/format.ts` 에 통화(KRW) 및 날짜 포맷 유틸을 작성한다.
+    - [x] `src/types/invoice.ts` 에 `Invoice`, `InvoiceItem`, `InvoiceStatus` 타입 정의. PRD 데이터 모델(`invoice_number`, `client_name`, `issue_date`, `valid_until`, `items`, `total_amount`, `status`)을 그대로 반영한다.
+    - [x] `InvoiceItem` 에 `description`, `quantity`, `unit_price`, `amount`(Formula 결과), `invoice_id` 를 정의한다.
+    - [x] Notion 원본 응답 타입과 앱 도메인 타입을 분리하고 매핑 함수 시그니처를 선언한다.
+    - [x] `src/lib/env.ts` 에서 `NOTION_API_KEY`, `NOTION_DATABASE_ID` 를 검증해 읽는 헬퍼를 작성한다 (서버 전용, `NEXT_PUBLIC_` 접두사 금지).
+    - [x] `.env.example` 작성 및 `.gitignore` 에 `.env.local` 포함 여부 확인.
+    - [x] `src/lib/format.ts` 에 통화(KRW) 및 날짜 포맷 유틸을 작성한다.
   - **완료 조건(DoD)**
-    - [ ] 모든 타입이 `strict` 모드에서 컴파일된다.
-    - [ ] 환경 변수 누락 시 명확한 에러 메시지가 발생한다.
-    - [ ] API 키가 클라이언트 번들에 포함되지 않는다.
+    - [x] 모든 타입이 `strict` 모드에서 컴파일된다.
+    - [x] 환경 변수 누락 시 명확한 에러 메시지가 발생한다.
+    - [x] API 키가 클라이언트 번들에 포함되지 않는다.
 
 ### Phase 2: UI/UX 완성 (더미 데이터 활용)
 
