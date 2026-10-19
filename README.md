@@ -44,7 +44,7 @@ npm run dev
 npm run build
 ```
 
-`.env.example`을 `.env.local`로 복사한 뒤 다음 환경 변수를 설정한다. 두 값은 서버 전용이며 `NEXT_PUBLIC_` 접두사를 붙이지 않는다.
+프로젝트 루트에 `.env.local`을 만들고 다음 환경 변수를 설정한다. 두 값은 서버 전용이며 `NEXT_PUBLIC_` 접두사를 붙이지 않는다.
 
 ```env
 NOTION_API_KEY=secret_xxxxxxxxxxxxx

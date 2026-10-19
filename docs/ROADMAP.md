@@ -26,7 +26,7 @@
 | `src/components/layout/*` (container, header, footer), `src/components/common/*` | 구현 완료 |
 | `@notionhq/client` | 미설치 (Task 003에서 도입) |
 | PDF 생성 라이브러리 (`@react-pdf/renderer` 등) | 미설치 (Task 007에서 도입) |
-| `NOTION_API_KEY`, `NOTION_DATABASE_ID` | `src/lib/env.ts` 헬퍼 및 `.env.example` 작성 완료 (Task 002) |
+| `NOTION_API_KEY`, `NOTION_DATABASE_ID` | `src/lib/env.ts` 헬퍼 작성 완료, `.env.local`로 관리 (Task 002) |
 | `src/app/invoice/[notionPageId]/` 라우트 | 미생성 (Task 001에서 생성) |
 
 ## ⚠️ Next.js 16 작업 규칙 (필수)
@@ -117,7 +117,7 @@
     - [x] `InvoiceItem` 에 `description`, `quantity`, `unit_price`, `amount`(Formula 결과), `invoice_id` 를 정의한다.
     - [x] Notion 원본 응답 타입과 앱 도메인 타입을 분리하고 매핑 함수 시그니처를 선언한다.
     - [x] `src/lib/env.ts` 에서 `NOTION_API_KEY`, `NOTION_DATABASE_ID` 를 검증해 읽는 헬퍼를 작성한다 (서버 전용, `NEXT_PUBLIC_` 접두사 금지).
-    - [x] `.env.example` 작성 및 `.gitignore` 에 `.env.local` 포함 여부 확인.
+    - [x] `.gitignore` 에 `.env.local` 포함 여부 확인 (`.env.example` 은 사용하지 않고 `.env.local` 로 관리한다).
     - [x] `src/lib/format.ts` 에 통화(KRW) 및 날짜 포맷 유틸을 작성한다.
   - **완료 조건(DoD)**
     - [x] 모든 타입이 `strict` 모드에서 컴파일된다.

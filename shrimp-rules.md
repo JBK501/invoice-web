@@ -159,7 +159,7 @@ src/
 - 환경 변수는 `NOTION_API_KEY`, `NOTION_DATABASE_ID` 두 개다. 접근은 **`src/lib/env.ts` 경유로만** 한다. 컴포넌트에서 `process.env`를 직접 읽지 않는다.
 - **`NEXT_PUBLIC_` 접두사를 Notion 관련 변수에 절대 붙이지 않는다.** 클라이언트 번들에 시크릿이 노출된다.
 - 키 값을 코드·문서·커밋에 하드코딩하지 않는다.
-- ⚠️ `.gitignore`가 `.env*` 전체를 무시한다. `.env.example`을 만들면 **반드시 `.gitignore`에 `!.env.example` 예외를 추가**한다. 그렇지 않으면 커밋되지 않는다.
+- `.gitignore`가 `.env*` 전체를 무시한다. 환경 변수 목록은 `.env.example` 없이 `.env.local`로 관리하며, 필요한 키와 설정 절차는 `README.md`에 기록한다.
 - 기존 `.env`에는 `SLACK_WEBHOOK_URL`, `CONTEXT7_API_KEY`(도구용)가 있다. **삭제하거나 덮어쓰지 않는다.** 추가만 한다.
 
 ## 파일 동시 수정 규칙
@@ -170,7 +170,7 @@ src/
 | 새 Task 착수 | `tasks/XXX-description.md` 생성 + `docs/ROADMAP.md`에 항목 추가 |
 | 기능 범위 변경 (F00X 추가/삭제) | `docs/PRD.md` 기능 명세표 + `docs/ROADMAP.md`의 "기능 ID ↔ Task 매핑" 표 |
 | 신규 의존성 설치 | `docs/ROADMAP.md`의 "현재 코드베이스 상태" 표 갱신 |
-| 환경 변수 추가 | `src/lib/env.ts` + `.env.example` + `README.md` 설정 절차 + `.gitignore` 예외 |
+| 환경 변수 추가 | `src/lib/env.ts` + `README.md` 설정 절차 |
 | `src/types/invoice.ts` 수정 | `src/lib/notion/invoice.ts` 매퍼 + `src/lib/mock/invoice.ts` 더미 데이터 + 관련 `src/components/invoice/*` |
 | 새 shadcn 컴포넌트 추가 | 없음 (`components.json`은 수정하지 않는다) |
 

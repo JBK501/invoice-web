@@ -7,7 +7,7 @@ function readRequiredEnv(name: string): string {
 
   if (!value) {
     throw new Error(
-      `환경 변수 ${name}이(가) 설정되지 않았다. .env.local에 값을 추가한다 (.env.example 참조).`
+      `환경 변수 ${name}이(가) 설정되지 않았다. .env.local에 값을 추가한다 (README.md 참조).`
     )
   }
 

@@ -13,8 +13,7 @@ UI(Phase 2)와 Notion 데이터 계층(Task 005)이 공유할 도메인 타입 �
 - `src/types/invoice.ts` (CREATE) — `Invoice`, `InvoiceItem`, `InvoiceStatus`, 매퍼 시그니처
 - `src/lib/env.ts` (CREATE) — `getNotionApiKey()`, `getNotionDatabaseId()`
 - `src/lib/format.ts` (CREATE) — `formatCurrency()`, `formatDate()`
-- `.env.example` (CREATE)
-- `.gitignore` (MODIFY) — `!.env.example` 예외 추가
+- `.gitignore` 확인 — `.env*` 무시 (`.env.example`은 사용하지 않고 `.env.local`로 관리)
 - `README.md` (MODIFY) — 환경 변수 설정 절차 보강
 
 ## 구현 단계
@@ -23,7 +22,7 @@ UI(Phase 2)와 Notion 데이터 계층(Task 005)이 공유할 도메인 타입 �
 - [x] Notion 원본 타입과 도메인 타입을 분리한다. 원본 타입은 SDK 미설치 상태이므로 제네릭 매퍼 시그니처(`InvoiceMapper`, `InvoiceItemMapper`)만 선언하고 구현은 Task 005에 위임한다.
 - [x] `env.ts` 최상단에 `import "server-only"`를 두고, 값이 없거나 공백이면 변수명을 포함한 에러를 throw 한다.
 - [x] `format.ts`에 KRW 통화 포맷과 `Asia/Seoul` 고정 날짜 포맷을 작성한다. 빈 값/잘못된 값에도 throw 하지 않는다.
-- [x] `.env.example` 작성 및 `.gitignore` 예외 추가.
+- [x] `.gitignore`의 `.env*` 무시 확인. `.env.example` 대신 `.env.local`로 관리한다.
 
 ## 결정 사항
 
@@ -35,4 +34,4 @@ UI(Phase 2)와 Notion 데이터 계층(Task 005)이 공유할 도메인 타입 �
 - [x] `npx tsc --noEmit`, `npm run build`, `eslint` 통과.
 - [x] 환경 변수 누락 시 `환경 변수 NOTION_API_KEY이(가) 설정되지 않았다...` 에러가 발생한다.
 - [x] `env.ts`가 `server-only`를 import 해 클라이언트 번들에서 사용 시 빌드 에러가 난다.
-- [x] `.env.example`이 `git status`에서 추적 대상(untracked)으로 표시된다.
+- [x] `.env.local`이 `git status`에 노출되지 않는다(gitignore).
