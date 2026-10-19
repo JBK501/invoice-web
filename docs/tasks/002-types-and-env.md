@@ -24,6 +24,21 @@ UI(Phase 2)와 Notion 데이터 계층(Task 005)이 공유할 도메인 타입 �
 - [x] `format.ts`에 KRW 통화 포맷과 `Asia/Seoul` 고정 날짜 포맷을 작성한다. 빈 값/잘못된 값에도 throw 하지 않는다.
 - [x] `.gitignore`의 `.env*` 무시 확인. `.env.example` 대신 `.env.local`로 관리한다.
 
+## 실제 노션 DB 대조 결과
+
+CSV 내보내기와 읽기 전용 스키마 조회(`databases.retrieve`)로 확인했다.
+
+| DB | 속성 | 노션 타입 |
+| --- | --- | --- |
+| Invoices | 견적서 번호 / 클라이언트명 / 발행일 / 유효기간 | title / rich_text / date / date |
+| Invoices | 상태 | **status** (대기, 거절, 승인) — PRD의 Select가 아니다 |
+| Invoices | 총 금액 / 항목 | number / relation → Items |
+| Items | 항목명 / 수량 / 단가 / 금액 | title / number / number / formula(수량 × 단가) |
+| Items | Invoices | relation → Invoices (PRD의 '견적서'가 아니다) |
+
+- 속성명은 `src/types/invoice.ts`의 `NOTION_INVOICE_PROPERTIES`, `NOTION_ITEM_PROPERTIES`로 관리한다. 매퍼(Task 005)는 이 상수를 사용한다.
+- Items DB ID 환경 변수는 추가하지 않는다. 견적서 페이지의 `항목` relation에서 항목 페이지를 개별 조회한다.
+
 ## 결정 사항
 
 - `server-only`는 별도 설치하지 않는다. Next.js가 내부적으로 처리하며 타입 선언도 제공한다(`05-server-and-client-components.md`).

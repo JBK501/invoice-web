@@ -120,7 +120,7 @@
 | valid_until    | 유효기간            | Date             |
 | items          | 견적 항목 리스트    | Array (Relation) |
 | total_amount   | 총 금액             | Number           |
-| status         | 견적서 상태         | Select           |
+| status         | 견적서 상태         | Status           |
 
 ### Notion Database Items (견적 항목)
 
@@ -141,7 +141,7 @@
 ├── 클라이언트명 (Text)
 ├── 발행일 (Date)
 ├── 유효기간 (Date)
-├── 상태 (Select: 대기/승인/거절)
+├── 상태 (Status: 대기/승인/거절)
 ├── 총 금액 (Number)
 └── 항목 (Relation → Items)
 
@@ -150,7 +150,7 @@
 ├── 수량 (Number)
 ├── 단가 (Number)
 ├── 금액 (Formula: 수량 × 단가)
-└── 견적서 (Relation → Invoices)
+└── Invoices (Relation → Invoices)
 ```
 
 ## 🛠️ 기술 스택 (최신 버전)
